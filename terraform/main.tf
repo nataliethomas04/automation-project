@@ -7,13 +7,14 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
-  key_name               = "KeyPair"
+  key_name               = "key-pair"
   vpc_security_group_ids = ["sg-0956e8a9f8516f46f"]
   tags = {
     Name = "react project"
 
 
   }
+  
   
   provisioner "remote-exec" {
     inline = [
