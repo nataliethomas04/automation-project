@@ -7,7 +7,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
-  key_name               = "key-pair"
+  key_name               = "KeyPair"
   vpc_security_group_ids = ["sg-0956e8a9f8516f46f"]
   tags = {
     Name = "react project"
@@ -15,7 +15,7 @@ resource "aws_instance" "example" {
 
   }
   
-  
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
