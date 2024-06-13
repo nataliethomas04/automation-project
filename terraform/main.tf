@@ -8,7 +8,7 @@ resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
   key_name               = "key-pair"
-  vpc_security_group_ids = ["sg-0956e8a9f8516f46f"]
+  vpc_security_group_ids = ["sg-04e3dbe8807de2c50"]
   tags = {
     Name = "react project"
 
