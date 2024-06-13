@@ -16,13 +16,14 @@ resource "aws_instance" "example" {
   }
   
 
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
       "mkdir project",
       "cd project",
       "sudo yum install git -y",
-      "git clone https://github.com/jmathew19/test",
+      "git clone https://github.com/nataliethomas04/automation-project",
       "cd react-aws-terraform-project",
       "sudo yum install -y nodejs npm",
       "node --version",
