@@ -5,7 +5,9 @@ on:
     branches:
       - main  
     paths:
-      - 'src/*'  
+      - 'src/*' 
+      - .github/workflows/edit_instance.yml
+      
 jobs:
   edit-instance:
     runs-on: ubuntu-latest
