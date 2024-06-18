@@ -11,11 +11,8 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = ["sg-04e3dbe8807de2c50"]
   tags = {
       Name = "react project"
-
-
   }
   
-
 
   provisioner "remote-exec" {
     inline = [
@@ -24,7 +21,7 @@ resource "aws_instance" "example" {
       "cd project",
       "sudo yum install git -y",
       "git clone https://github.com/nataliethomas04/automation-project",
-      "cd react-aws-terraform-project",
+      "cd automation-project",
       "sudo yum install -y nodejs npm",
       "node --version",
       "npm --version",
@@ -32,10 +29,8 @@ resource "aws_instance" "example" {
       "npm install react-scripts --save-dev",
       "npm install react-dom",
       "npm install react-router-dom",
-      "cd ~/automation-project",
+      "cd ~/automation-project/src",
       "npm start"
-      # Additional commands to start your application
-
     ]
     
     connection {
