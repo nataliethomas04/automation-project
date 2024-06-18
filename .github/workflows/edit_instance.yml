@@ -7,7 +7,7 @@ on:
     paths:
       - 'src/*' 
       - .github/workflows/edit_instance.yml
-      
+
 jobs:
   edit-instance:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
       - name: SSH into EC2 Instance and update folder
         uses: appleboy/ssh-action@master
         with:
-            host: 34.235.167.220
+            host: 100.27.229.238
             username: ec2-user
             key: ${{env.PRIVATE_KEY2}}
             script: |
