@@ -15,9 +15,10 @@ function App() {
 
   return (
     <div>
-      <h1>Random Quote Generator</h1>
+      <h1>Fortune Cookie</h1>
+      <p>Your fortune is...</p>
       <p>{quote}</p>
-      <button onClick={fetchQuote}>Get New Quote</button>
+      <button onClick={fetchQuote}>I need more cookies</button>
     </div>
   );
 }
