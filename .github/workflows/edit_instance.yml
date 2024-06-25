@@ -20,7 +20,7 @@ jobs:
       - name: Decode private key
         run: |
             echo ${{env.PRIVATE_KEY_BASE64}} | base64 --decode > key-pair.pem
-            chmod key-pairs.pem
+            chmod key-pair.pem
 
       - name: SSH into EC2 Instance and update folder
         uses: appleboy/ssh-action@master
