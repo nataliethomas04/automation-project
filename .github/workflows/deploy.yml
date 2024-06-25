@@ -8,6 +8,7 @@ on:
       - .github/workflows/deploy.yml
       - terraform/*
       
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
