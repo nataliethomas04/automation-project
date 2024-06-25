@@ -10,7 +10,7 @@ resource "aws_instance" "example" {
   key_name               = "key-pair"
   vpc_security_group_ids = ["sg-04e3dbe8807de2c50"]
   tags = {
-    Name = "Testing Testing 1234"
+    Name = "Poops Johnyy"
 
   }
   
