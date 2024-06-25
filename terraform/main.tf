@@ -56,4 +56,4 @@ variable "aws_access_key_id" {
 variable "aws_secret_access_key" {
   description = "AWS secret access key"
   type        = string
-}
+} 
