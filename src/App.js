@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  const [quote, setQuote] = useState('');
-
-  const fetchQuote = async () => {
-    const response = await fetch('https://api.quotable.io/random');
-    const data = await response.json();
-    setQuote(data.content);
-  };
-
-  useEffect(() => {
-    fetchQuote();
-  }, []);
-
-  return (
-    <div>
-      <h1>Fortune Cookie</h1>
-      <p>Your fortune is...</p>
-      <p>{quote}</p>
-      <button onClick={fetchQuote}>I need more cookies</button>
-    </div>
-  );
+ return (
+   <div className="App">
+     <header className="App-header">
+       <img src={logo} className="App-logo" alt="logo" />
+       <p>
+         Justin
+       </p>
+       <a
+         className="App-link"
+         href="https://reactjs.org"
+         target="_blank"
+         rel="noopener noreferrer"
+       >
+         Learn React
+       </a>
+     </header>
+   </div>
+ );
 }
 
 export default App;
