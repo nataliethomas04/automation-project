@@ -7,7 +7,7 @@ function App() {
      <header className="App-header">
        <img src={logo} className="App-logo" alt="logo" />
        <p>
-         It's Wednesday June 26th
+         All these squares make a circle
        </p>
        <a
          className="App-link"
