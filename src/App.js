@@ -13,6 +13,7 @@ function App() {
     phone1: '',
     phone2: ''
   });
+  const [editIndex, setEditIndex] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +25,14 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStudents([...students, formData]);
+    if (editIndex !== null) {
+      const updatedStudents = [...students];
+      updatedStudents[editIndex] = formData;
+      setStudents(updatedStudents);
+      setEditIndex(null);
+    } else {
+      setStudents([...students, formData]);
+    }
     setFormData({
       name: '',
       birthday: '',
@@ -36,6 +44,17 @@ function App() {
       phone2: ''
     });
     setPage('home');
+  };
+
+  const handleEdit = (index) => {
+    setFormData(students[index]);
+    setEditIndex(index);
+    setPage('register');
+  };
+
+  const handleDelete = (index) => {
+    const updatedStudents = students.filter((_, i) => i !== index);
+    setStudents(updatedStudents);
   };
 
   return (
@@ -50,7 +69,7 @@ function App() {
 
       {page === 'register' && (
         <div>
-          <h1>Register New Student</h1>
+          <h1>{editIndex !== null ? 'Edit Student' : 'Register New Student'}</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label>Name:</label>
@@ -84,8 +103,8 @@ function App() {
               <label>Parent 2 Phone:</label>
               <input type="tel" name="phone2" value={formData.phone2} onChange={handleInputChange} required />
             </div>
-            <button type="submit">Add Student</button>
-            <button type="button" onClick={() => setPage('home')}>Cancel</button>
+            <button type="submit">{editIndex !== null ? 'Update Student' : 'Add Student'}</button>
+            <button type="button" onClick={() => { setPage('home'); setEditIndex(null); }}>Cancel</button>
           </form>
         </div>
       )}
@@ -100,6 +119,8 @@ function App() {
               {students.map((student, index) => (
                 <li key={index}>
                   {student.name} - {student.birthday} - {student.address} - {student.grade} - {student.parent1} ({student.phone1}) - {student.parent2} ({student.phone2})
+                  <button onClick={() => handleEdit(index)}>Edit</button>
+                  <button onClick={() => handleDelete(index)}>Delete</button>
                 </li>
               ))}
             </ul>
