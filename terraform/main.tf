@@ -13,8 +13,7 @@ resource "aws_instance" "example" {
     Name = "4th of July Eve"
 
   }
-  
-  
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
