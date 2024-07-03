@@ -1,88 +1,110 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [names, setNames] = useState(['', '', '', '']);
-  const [selectedName, setSelectedName] = useState('');
-  const [selectedDare, setSelectedDare] = useState('');
-  const [gameEnded, setGameEnded] = useState(false);
+  const [page, setPage] = useState('home');
+  const [students, setStudents] = useState([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    birthday: '',
+    address: '',
+    grade: '',
+    parent1: '',
+    parent2: '',
+    phone1: '',
+    phone2: ''
+  });
 
-  const dares = [
-    'At the end of a meeting, suggest that, for once, it would be nice to conclude with the singing of the national anthem (extra points if you actually launch into it yourself).',
-    'Walk into a very busy person’s office and while they watch you with growing irritation, turn the light switch on/off 10 times.',
-    'For an hour, refer to everyone you speak to as “Dave”.',
-    'Announce to everyone in a meeting that you “really have to go do a number two”.',
-    'When you’ve picked up a call, before speaking finish off some fake conversation with the words, ”she can abort it for all I care”.',
-    'After every sentence, say "Mon" in a really bad Jamaican accent. As in: “The report’s on your desk, Mon.” Keep this up for one hour.',
-    'In a meeting or crowded situation, slap your forehead repeatedly and mutter, “Shut up, damn it, all of you just shut up!”',
-    'At lunchtime, get down on your knees and announce, “As God is my witness, I’ll never go hungry again!”',
-    'Repeat the following conversation 10 times to the same person: “Do you hear that?” “What?” “Never mind, it’s gone now.”',
-    'Present meeting attendees with a cup of coffee and biscuit; smash each biscuit with your fist.'
-  ];
-
-  const handleNameChange = (index, value) => {
-    const newNames = [...names];
-    newNames[index] = value;
-    setNames(newNames);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
-  const pickDare = () => {
-    const filteredNames = names.filter(name => name.trim() !== '');
-    if (filteredNames.length === 0) {
-      alert('Please enter at least one name.');
-      return;
-    }
-
-    const randomName = filteredNames[Math.floor(Math.random() * filteredNames.length)];
-    const randomDare = dares[Math.floor(Math.random() * dares.length)];
-
-    setSelectedName(randomName);
-    setSelectedDare(randomDare);
-  };
-
-  const resetGame = () => {
-    setNames(['', '', '', '']);
-    setSelectedName('');
-    setSelectedDare('');
-    setGameEnded(false);
-  };
-
-  const continueGame = () => {
-    setSelectedName('');
-    setSelectedDare('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStudents([...students, formData]);
+    setFormData({
+      name: '',
+      birthday: '',
+      address: '',
+      grade: '',
+      parent1: '',
+      parent2: '',
+      phone1: '',
+      phone2: ''
+    });
+    setPage('home');
   };
 
   return (
     <div>
-      <h1>Dare Picker</h1>
-      {gameEnded ? (
+      {page === 'home' && (
         <div>
-          <button onClick={resetGame}>New Game</button>
+          <h1>School Registration</h1>
+          <button onClick={() => setPage('register')}>Register New Student</button>
+          <button onClick={() => setPage('viewClass')}>View Class</button>
         </div>
-      ) : (
+      )}
+
+      {page === 'register' && (
         <div>
-          {selectedName && selectedDare ? (
+          <h1>Register New Student</h1>
+          <form onSubmit={handleSubmit}>
             <div>
-              <h2>Selected Dare</h2>
-              <p>{selectedName}, your dare is: {selectedDare}</p>
-              <button onClick={continueGame}>Continue Game</button>
-              <button onClick={() => setGameEnded(true)}>End Game</button>
+              <label>Name:</label>
+              <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
             </div>
+            <div>
+              <label>Birthday:</label>
+              <input type="date" name="birthday" value={formData.birthday} onChange={handleInputChange} required />
+            </div>
+            <div>
+              <label>Address:</label>
+              <input type="text" name="address" value={formData.address} onChange={handleInputChange} required />
+            </div>
+            <div>
+              <label>Grade:</label>
+              <input type="text" name="grade" value={formData.grade} onChange={handleInputChange} required />
+            </div>
+            <div>
+              <label>Parent 1 Name:</label>
+              <input type="text" name="parent1" value={formData.parent1} onChange={handleInputChange} required />
+            </div>
+            <div>
+              <label>Parent 2 Name:</label>
+              <input type="text" name="parent2" value={formData.parent2} onChange={handleInputChange} required />
+            </div>
+            <div>
+              <label>Parent 1 Phone:</label>
+              <input type="tel" name="phone1" value={formData.phone1} onChange={handleInputChange} required />
+            </div>
+            <div>
+              <label>Parent 2 Phone:</label>
+              <input type="tel" name="phone2" value={formData.phone2} onChange={handleInputChange} required />
+            </div>
+            <button type="submit">Add Student</button>
+            <button type="button" onClick={() => setPage('home')}>Cancel</button>
+          </form>
+        </div>
+      )}
+
+      {page === 'viewClass' && (
+        <div>
+          <h1>Class List</h1>
+          {students.length === 0 ? (
+            <p>No students registered yet.</p>
           ) : (
-            <div>
-              <h2>Enter Names</h2>
-              {names.map((name, index) => (
-                <div key={index}>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => handleNameChange(index, e.target.value)}
-                    placeholder={`Name ${index + 1}`}
-                  />
-                </div>
+            <ul>
+              {students.map((student, index) => (
+                <li key={index}>
+                  {student.name} - {student.birthday} - {student.address} - {student.grade} - {student.parent1} ({student.phone1}) - {student.parent2} ({student.phone2})
+                </li>
               ))}
-              <button onClick={pickDare}>Pick a Dare</button>
-            </div>
+            </ul>
           )}
+          <button onClick={() => setPage('home')}>Back to Home</button>
         </div>
       )}
     </div>
@@ -90,4 +112,3 @@ function App() {
 }
 
 export default App;
-
