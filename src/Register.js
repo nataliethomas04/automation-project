@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import './Register.css';
 
 function Register({ addStudent }) {
   const [name, setName] = useState('');
@@ -21,43 +22,42 @@ function Register({ addStudent }) {
   };
 
   return (
-    <div className="register-container">
+    <div className="Register">
       <h1>Register New Student</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div>
           <label>Name:</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div>
           <label>Birthday:</label>
           <input type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div>
           <label>Address:</label>
           <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div>
           <label>Grade:</label>
           <input type="text" value={grade} onChange={(e) => setGrade(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div>
           <label>Parent 1 Name:</label>
           <input type="text" value={parent1} onChange={(e) => setParent1(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div>
           <label>Parent 2 Name:</label>
           <input type="text" value={parent2} onChange={(e) => setParent2(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div>
           <label>Parent 1 Phone:</label>
           <input type="tel" value={phone1} onChange={(e) => setPhone1(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div>
           <label>Parent 2 Phone:</label>
           <input type="tel" value={phone2} onChange={(e) => setPhone2(e.target.value)} required />
         </div>
-        <button type="submit" className="btn">Add Student</button>
-        <button type="button" className="btn" onClick={() => history.push('/')}>Cancel</button>
+        <button type="submit">Add Student</button>
       </form>
     </div>
   );

@@ -1,117 +1,91 @@
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: hsl(55, 65%, 74%);
-  color: #333;
+  padding: 0;
+  background-color: #f7f7f7;
 }
 
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 20vmin;
-  pointer-events: none;
-}
-
 .App-header {
-  background-color: #004080;
-  padding: 20px;
+  background-color: #4caf50;
   color: white;
+  padding: 20px;
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5em;
 }
 
-nav ul li {
-  display: inline;
-  margin: 0 10px;
+.App main {
+  padding: 20px;
 }
 
-nav ul li .nav-link {
-  color: #61dafb;
+.App-footer {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
   text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
-nav ul li .nav-link:hover {
-  text-decoration: underline;
+button:hover {
+  background-color: #45a049;
 }
 
-main {
-  padding: 20px;
-}
-
-/* Home.css */
-.home-container {
-  padding: 20px;
-}
-
-.App-logo {
-  height: 10vmin;
-  pointer-events: none;
-}
-
-.nav-link {
-  color: #004080;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-}
-
-/* Register.css */
-.register-container {
-  padding: 20px;
-}
-
-.form-group {
+form div {
   margin-bottom: 15px;
 }
 
-.form-group label {
+label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.form-group input {
+input[type="text"],
+input[type="date"],
+input[type="tel"] {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
-.btn {
-  margin-right: 10px;
-  padding: 10px 20px;
-  background-color: #004080;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: hsl(7, 100%, 20%);
-}
-
-/* ViewClass.css */
-.view-class-container {
-  padding: 20px;
-}
-
-.student-list {
+ul {
   list-style-type: none;
   padding: 0;
 }
 
-.student-item {
-  background-color: lightcoral;
+ul li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 5px 0;
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+ul li:hover {
+  background-color: #f1f1f1;
 }
