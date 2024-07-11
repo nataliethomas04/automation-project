@@ -1,5 +1,4 @@
 import React from 'react';
-import './ViewClass.css';
 
 function ViewClass({ students }) {
   return (
