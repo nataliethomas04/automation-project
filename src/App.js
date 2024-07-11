@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';  // Make sure to create an App.css file for custom styles
 
 function App() {
   const [page, setPage] = useState('home');
@@ -58,74 +59,74 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       {page === 'home' && (
-        <div>
+        <div className="home">
           <h1>School Registration</h1>
-          <button onClick={() => setPage('register')}>Register New Student</button>
-          <button onClick={() => setPage('viewClass')}>View Class</button>
+          <button className="btn" onClick={() => setPage('register')}>Register New Student</button>
+          <button className="btn" onClick={() => setPage('viewClass')}>View Class</button>
         </div>
       )}
 
       {page === 'register' && (
-        <div>
+        <div className="form-container">
           <h1>{editIndex !== null ? 'Edit Student' : 'Register New Student'}</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
+          <form onSubmit={handleSubmit} className="form">
+            <div className="form-group">
               <label>Name:</label>
               <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
             </div>
-            <div>
+            <div className="form-group">
               <label>Birthday:</label>
               <input type="date" name="birthday" value={formData.birthday} onChange={handleInputChange} required />
             </div>
-            <div>
+            <div className="form-group">
               <label>Address:</label>
               <input type="text" name="address" value={formData.address} onChange={handleInputChange} required />
             </div>
-            <div>
+            <div className="form-group">
               <label>Grade:</label>
               <input type="text" name="grade" value={formData.grade} onChange={handleInputChange} required />
             </div>
-            <div>
+            <div className="form-group">
               <label>Parent 1 Name:</label>
               <input type="text" name="parent1" value={formData.parent1} onChange={handleInputChange} required />
             </div>
-            <div>
+            <div className="form-group">
               <label>Parent 2 Name:</label>
               <input type="text" name="parent2" value={formData.parent2} onChange={handleInputChange} required />
             </div>
-            <div>
+            <div className="form-group">
               <label>Parent 1 Phone:</label>
               <input type="tel" name="phone1" value={formData.phone1} onChange={handleInputChange} required />
             </div>
-            <div>
+            <div className="form-group">
               <label>Parent 2 Phone:</label>
               <input type="tel" name="phone2" value={formData.phone2} onChange={handleInputChange} required />
             </div>
-            <button type="submit">{editIndex !== null ? 'Update Student' : 'Add Student'}</button>
-            <button type="button" onClick={() => { setPage('home'); setEditIndex(null); }}>Cancel</button>
+            <button type="submit" className="btn">{editIndex !== null ? 'Update Student' : 'Add Student'}</button>
+            <button type="button" className="btn btn-cancel" onClick={() => { setPage('home'); setEditIndex(null); }}>Cancel</button>
           </form>
         </div>
       )}
 
       {page === 'viewClass' && (
-        <div>
+        <div className="class-list">
           <h1>Class List</h1>
           {students.length === 0 ? (
             <p>No students registered yet.</p>
           ) : (
             <ul>
               {students.map((student, index) => (
-                <li key={index}>
+                <li key={index} className="student-item">
                   {student.name} - {student.birthday} - {student.address} - {student.grade} - {student.parent1} ({student.phone1}) - {student.parent2} ({student.phone2})
-                  <button onClick={() => handleEdit(index)}>Edit</button>
-                  <button onClick={() => handleDelete(index)}>Delete</button>
+                  <button className="btn" onClick={() => handleEdit(index)}>Edit</button>
+                  <button className="btn btn-delete" onClick={() => handleDelete(index)}>Delete</button>
                 </li>
               ))}
             </ul>
           )}
-          <button onClick={() => setPage('home')}>Back to Home</button>
+          <button className="btn" onClick={() => setPage('home')}>Back to Home</button>
         </div>
       )}
     </div>
