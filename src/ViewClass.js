@@ -1,15 +1,13 @@
-import React from 'react';
-
 function ViewClass({ students }) {
   return (
-    <div className="view-class-container">
+    <div>
       <h1>Class List</h1>
       {students.length === 0 ? (
         <p>No students registered yet.</p>
       ) : (
-        <ul className="student-list">
+        <ul>
           {students.map((student, index) => (
-            <li key={index} className="student-item">
+            <li key={index}>
               {student.name} - {student.birthday} - {student.address} - {student.grade} - {student.parent1} ({student.phone1}) - {student.parent2} ({student.phone2})
             </li>
           ))}
