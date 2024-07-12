@@ -1,3 +1,5 @@
+import React from 'react';
+
 function ViewClass({ students }) {
   return (
     <div>

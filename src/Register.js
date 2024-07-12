@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './Register.css';
 
 function Register({ addStudent }) {
   const [name, setName] = useState('');
@@ -22,7 +21,7 @@ function Register({ addStudent }) {
   };
 
   return (
-    <div className="Register">
+    <div>
       <h1>Register New Student</h1>
       <form onSubmit={handleSubmit}>
         <div>
