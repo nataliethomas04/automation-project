@@ -1,0 +1,30 @@
+.ViewClass {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ViewClass h1 {
+    margin-bottom: 20px;
+  }
+  
+  .ViewClass ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .ViewClass ul li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .ViewClass ul li:hover {
+    background-color: #f1f1f1;
+  }
+  
